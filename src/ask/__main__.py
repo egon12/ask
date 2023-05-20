@@ -7,6 +7,12 @@ def main():
     res = ask(prompt)
     print(res.choices[0].text)
 
+def ask_from_file(filename):
+    f = open(filename)
+    prompt = f.read()
+    res = ask(prompt)
+    print(res.choices[0].text)
+
 def ask(prompt):
     return openai.Completion.create(
       model="text-davinci-003",
@@ -20,3 +26,4 @@ def ask(prompt):
 
 if __name__ == "__main__":
     main()
+    #ask_from_file("diff.txt")
