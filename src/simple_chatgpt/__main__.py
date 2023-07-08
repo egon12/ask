@@ -3,6 +3,14 @@ import sys
 from simple_chatgpt.ask import ask
 
 def main():
+  try:
+    prompt = get_prompt()
+    print(ask(prompt))
+  except KeyboardInterrupt:
+    print('\nCanceled!')
+    sys.exit(0)
+
+def get_prompt():
   args = sys.argv[1:]
 
   if len(args) == 0:
@@ -14,7 +22,7 @@ def main():
   else:
     prompt = ' '.join(args)
 
-  print(ask(prompt))
+  return prompt
 
 if __name__ == "__main__":
   main()
