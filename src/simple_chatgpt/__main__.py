@@ -8,6 +8,7 @@ def main():
   if len(args) == 0:
     prompt = input('Are there anything that I can help? ')
   elif len(args) == 1 and args[0] == "-":
+    print('Type your prompt and press Ctrl+D to finish.')
     prompt = sys.stdin.read()
   else:
     prompt = ' '.join(args)
