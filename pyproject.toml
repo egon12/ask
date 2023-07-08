@@ -27,4 +27,4 @@ classifiers = [
 "Bug Tracker" = "https://github.com/egon12/ask/issues"
 
 [project.scripts]
-realpython = "simple_chatgpt.__main__:main"
+ask = "simple_chatgpt.__main__:main"
