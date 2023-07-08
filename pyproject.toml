@@ -1,12 +1,21 @@
+# pyproject.toml
+
+[build-system]
+requires      = ["setuptools>=61.0.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
 [project]
-name = "chatgpt-ask"
+name = "simple-chatgpt"
 version = "0.0.1"
 authors = [
   { name="Egon Firman", email="egon.firman@gmail.com" },
 ]
-description = "Executeable to ask to chatgpt"
+description = "Simple Answering Question using GPT-3"
 readme = "README.md"
 requires-python = ">=3.7"
+dependencies = [
+    "openai >= 0.27.8",
+]
 classifiers = [
     "Programming Language :: Python :: 3",
     "License :: OSI Approved :: MIT License",
@@ -14,9 +23,8 @@ classifiers = [
 ]
 
 [project.urls]
-"Homepage" = "https://github.com/pypa/sampleproject"
-"Bug Tracker" = "https://github.com/pypa/sampleproject/issues"
+"Homepage" = "https://github.com/egon12/ask"
+"Bug Tracker" = "https://github.com/egon12/ask/issues"
 
-[build-system]
-requires = ["openai>=0.27.6", "hatchling"]
-build-backend = "hatchling.build"
+[project.scripts]
+realpython = "simple_chatgpt.__main__:main"
