@@ -28,3 +28,6 @@ classifiers = [
 
 [project.scripts]
 ask = "simple_chatgpt.__main__:main"
+review = "simple_chatgpt.review:main"
+git-cm = "simple_chatgpt.gitcm:main"
+

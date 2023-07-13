@@ -1,8 +1,9 @@
-from ask import ask
+from .ask import ask
+from git import Git
 
 import sys
 
-REVIEW_PROMPT='Please review and give short feedback for the code below. Also please give examples of better code if needed.\n\n'
+review_prompt ='Please review and give short feedback for the code below. Also please give examples of better code if needed.\n\n'
 
 def get_lines_from_file(file_name, start_line=None, end_line=None):
     """
@@ -109,9 +110,28 @@ def review(input_file_name):
     filename, start_line, end_line = parse_file_name(input_file_name)
     lines = get_lines_from_file(filename, start_line, end_line)
     content = format_lines(lines)
-    return ask(f"{REVIEW_PROMPT}{content}")
+    return ask(f"{review_prompt }{content}")
 
-if __name__ == "__main__":
+def review_from_git_staged():
+    """
+    Reviews the content of a file that has been staged in git.
+    
+    Returns:
+        str: The reviewed content of the file.
+    """
+    git = Git()
+    diff = git.diff('--staged')
+    prompt = "Please review and give short feedback for the diff below. Give examples if needed.\n\n"
+    return ask(f"{prompt}{diff}")
+
+def main():
+    if len(sys.argv) < 2:
+        print(review_from_git_staged())
+        sys.exit(0)
+
     filename = sys.argv[1]
     print(review(filename))
+
+if __name__ == "__main__":
+    main()
 

@@ -1,5 +1,5 @@
 from git import Git
-from ask import ask
+from .ask import ask
 
 commit_message_prompt = 'Please generate commit message based on this diff\n\n'
 
@@ -9,5 +9,8 @@ def generate_commit_message():
     commit_message = ask(commit_message_prompt + diff)
     return commit_message
 
-if __name__ == '__main__':
+def main():
     print(generate_commit_message())
+
+if __name__ == '__main__':
+    main()
