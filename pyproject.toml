@@ -30,4 +30,6 @@ classifiers = [
 ask = "simple_chatgpt.__main__:main"
 review = "simple_chatgpt.review:main"
 git-cm = "simple_chatgpt.gitcm:main"
+chat   = "chat.chat:just_chat"
+rchat  = "chat.chat:rchat"
 
