@@ -5,8 +5,8 @@ def ask(prompt):
   if prompt == '':
     return 'Please ask a question!'
 
-  return ask_bard(prompt)
-  #return ask_chatgpt(prompt)
+  #return ask_bard(prompt)
+  return ask_chatgpt(prompt)
 
 def ask_bard(prompt):
   answer = bardapi.core.Bard().get_answer(prompt)

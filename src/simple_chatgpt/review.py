@@ -110,7 +110,7 @@ def review(input_file_name):
     filename, start_line, end_line = parse_file_name(input_file_name)
     lines = get_lines_from_file(filename, start_line, end_line)
     content = format_lines(lines)
-    return ask(f"{review_prompt }{content}")
+    return ask(f"{review_prompt}{content}")
 
 def review_from_git_staged():
     """
@@ -128,7 +128,6 @@ def main():
     if len(sys.argv) < 2:
         print(review_from_git_staged())
         sys.exit(0)
-
     filename = sys.argv[1]
     print(review(filename))
 
