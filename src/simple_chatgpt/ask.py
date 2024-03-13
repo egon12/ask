@@ -1,10 +1,17 @@
 import openai
+import google.generativeai as genai
 
 def ask(prompt):
   if prompt == '':
     return 'Please ask a question!'
 
-  return ask_chatgpt(prompt)
+  # return ask_chatgpt(prompt)
+  return ask_gemini(prompt)
+
+def ask_gemini(prompt):
+  model = genai.GenerativeModel('gemini-pro')
+  response = model.generate_content(prompt)
+  return response.candidates[0].content.parts[0].text
 
 def ask_chatgpt(prompt):
   res = openai.ChatCompletion.create(
