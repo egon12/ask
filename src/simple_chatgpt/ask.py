@@ -1,28 +1,27 @@
-import openai
-import google.generativeai as genai
+import os
+from openai import OpenAI
 
 def ask(prompt):
   if prompt == '':
     return 'Please ask a question!'
 
-  # return ask_chatgpt(prompt)
-  return ask_gemini(prompt)
+  return ask_server(prompt)
 
-def ask_gemini(prompt):
-  model = genai.GenerativeModel('gemini-pro')
-  response = model.generate_content(prompt)
-  return response.candidates[0].content.parts[0].text
 
-def ask_chatgpt(prompt):
-  res = openai.ChatCompletion.create(
-      model='gpt-3.5-turbo',
-      messages=[{'role':'user','content':prompt}],
-      temperature=1,
-      max_tokens=512,
-      top_p=1,
-      frequency_penalty=0,
-      presence_penalty=0
-      )
+def ask_server(prompt):
+  api_key = os.getenv("OPENROUTER_API_KEY")
+
+  client = OpenAI(
+      base_url="https://openrouter.ai/api/v1",
+      api_key=api_key,
+  )
+
+  res = client.chat.completions.create(
+      model="openrouter/free", # Replace with any model available on OpenRouter
+      messages=[
+          {"role": "user", "content": prompt}
+      ]
+  )
 
   choice = res.choices[0]
 

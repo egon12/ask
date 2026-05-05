@@ -6,15 +6,15 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "simple-chatgpt"
-version = "0.0.2"
+version = "0.0.3"
 authors = [
   { name="Egon Firman", email="egon.firman@gmail.com" },
 ]
 description = "Simple Answering Question using GPT-3"
 readme = "README.md"
-requires-python = ">=3.7"
+requires-python = ">=3.12"
 dependencies = [
-    "openai >= 0.27.8",
+    "openai >= 2.34.0",
 ]
 classifiers = [
     "Programming Language :: Python :: 3",
